@@ -1,0 +1,33 @@
+def cost_to_ship(weight):
+  if (weight <= 2):
+    return (weight * 1.50 + 20)
+  elif (weight > 2) and (weight <= 6):
+    return (weight * 3.00 + 20)
+  elif (weight > 6) and (weight <= 10):
+    return (weight * 4.00 + 20)
+  else:
+    return (weight * 4.75 + 20)
+
+premium_ground_shipping = 125
+
+def drone_shipping(weight):
+  if (weight <= 2):
+    return (weight * 4.50)
+  elif (weight > 2) and (weight <=6):
+    return (weight * 9.00)
+  elif (weight > 6) and (weight <= 10):
+    return (weight * 12.00)
+  else:
+    return (weight * 14.25)
+
+
+def cheapest_shipping_method(weight):
+  if (cost_to_ship(weight) < drone_shipping(weight)) and (cost_to_ship(weight) < premium_ground_shipping):
+    return 'Standard Ground Shipping is the cheapest and would cost: $' + str(cost_to_ship(weight))
+  elif (drone_shipping(weight) < cost_to_ship(weight)) and (drone_shipping(weight) < premium_ground_shipping):
+    return 'Drone Shipping is the cheapest and would cost: $'+ str(drone_shipping(weight))
+  else:
+    return 'Premium Ground Shipping is the cheapest and would cost: $'+ str(premium_ground_shipping)
+  
+print(cheapest_shipping_method(2.5))
+
